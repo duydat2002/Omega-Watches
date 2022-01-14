@@ -1,6 +1,8 @@
 const body = document.body;
 const overlay = document.querySelector('#overlay');
 const headerMenu = document.querySelector('.header__menu');
+const menuOpen = document.querySelector('.menu-open');
+const menuClose = document.querySelector('.menu-close');
 const barWrapper = document.querySelector('.bar-wrapper');
 const navBar = document.querySelector('.nav');
 const navList = document.querySelector('.nav-list');
@@ -31,6 +33,8 @@ window.onscroll = () => {
 /* ===== SHOW/HIDE NAVBAR ===== */
 headerMenu.onclick = () => {
     headerMenu.classList.toggle('active');
+    menuOpen.classList.toggle('hide');
+    menuClose.classList.toggle('hide');
     barWrapper.classList.toggle('active');
     navBar.classList.toggle('active');
     overlay.classList.toggle('active');

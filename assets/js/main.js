@@ -39,6 +39,9 @@ headerMenu.onclick = () => {
     navBar.classList.toggle('active');
     overlay.classList.toggle('active');
     body.classList.toggle('overlay-active');
+    const panelActive = subnavList.querySelector('.has-panel.active');
+    if (panelActive)
+        panelActive.classList.remove('active');
 };
 
 /* ===== SHOW/HIDE SUBNAV ===== */
@@ -46,13 +49,13 @@ navTitles.forEach(item => {
     item.onclick = () => {
         const navItem = item.parentElement;
         const itemActive = navList.querySelector('.nav-item.active');
-        const subitemActive = subnavList.querySelector('.has-panel.active');
+        const panelActive = subnavList.querySelector('.has-panel.active');
 
         if (itemActive && itemActive !== navItem)
             itemActive.classList.remove('active');
         
-        if (subitemActive) {
-            subitemActive.classList.remove('active');
+        if (panelActive) {
+            panelActive.classList.remove('active');
         }
 
         navItem.classList.toggle('active');
@@ -62,18 +65,33 @@ navTitles.forEach(item => {
 /* ===== SHOW/HIDE NAV PANEL ===== */
 subnavTitles.forEach(item => {
     item.onclick = (e) => {
-        const subnavItem = item.parentElement;
-        const itemActive = subnavList.querySelector('.has-panel.active');
+        const panelItem = item.parentElement;
+        const panelActive = subnavList.querySelector('.has-panel.active');
 
-        if (itemActive && itemActive !== subnavItem) {
-            itemActive.classList.remove('active');
+        if (panelActive && panelActive !== panelItem) {
+            panelActive.classList.remove('active');
         }
 
-        subnavItem.classList.toggle('active');
+        panelItem.classList.toggle('active');
     }
 });
 
 
+/* ===== CLICK OUTSIDE ===== */
+document.onclick = (e) => {
+    if (!navBar.contains(e.target) && !headerMenu.contains(e.target)) {
+        headerMenu.classList.remove('active');
+        menuOpen.classList.remove('hide');
+        menuClose.classList.add('hide');
+        barWrapper.classList.remove('active');
+        navBar.classList.remove('active');
+        overlay.classList.remove('active');
+        body.classList.remove('overlay-active');
+        const panelActive = subnavList.querySelector('.has-panel.active');
+        if (panelActive)
+            panelActive.classList.remove('active');
+    }
+}
 
 
 

@@ -603,6 +603,7 @@ body.overlay-active .header__container {
     position: relative;
     width: 17px;
     height: 100%;
+    cursor: pointer;
 }
 
 .search-bar {
